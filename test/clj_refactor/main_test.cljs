@@ -5,9 +5,12 @@
               [clj-refactor.transform-test :as tt]))
 
 (nodejs/enable-util-print!)
-(def -main (fn [] nil))
-(set! *main-cli-fn* -main)
 
-(defn test-it []
+(defn -main []
   (run-tests 'clj-refactor.edit-test
              'clj-refactor.transform-test))
+
+(set! *main-cli-fn* -main)
+
+#_(require 'cljs.repl.node)
+#_(cider.piggieback/cljs-repl (cljs.repl.node/repl-env))

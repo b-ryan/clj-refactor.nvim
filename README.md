@@ -1,6 +1,6 @@
 A neovim port of [clj-refactor.el](https://github.com/clojure-emacs/clj-refactor.el)
 
-# Usage 
+# Usage
 
 All commands are mapped under the `cr` prefix and use a two letter mnemonic shortcut. E.g. `crrs` for `Clojure Refactor Rename Symbol`.The full list is below.
 
@@ -26,7 +26,7 @@ Using Vundle, add this to your vundle .config/nvim/init.vim section:
 ### Inside nvim
 
 - run `:PluginInstall`
-- `:UpdateRemotePlugins` you should see `remote/host: node host registered plugins ['clj-refactor.nvim']` 
+- `:UpdateRemotePlugins` you should see `remote/host: node host registered plugins ['clj-refactor.nvim']`
 - close *all* nvims simultaneously
 - refactor
 
@@ -85,14 +85,23 @@ You can set `g:clj_refactor_prune_ns_form` and `g:clj_refactor_prefix_rewriting`
 
 # Development / Testing
 
-Run `lein npm install`
+Run `npm install`
 
 I generally have 4 terminals open:
 
-- `$ rlwrap lein figwheel`
+- `$ lein cljsbuild auto test`
 - `$ node target/out/tests.js`
 - `$ lein cljsbuild auto plugin`
 - `$ tail -f $NEOVIM_JS_DEBUG`
 
-Somewhere in your environment do `export NEOVIM_JS_DEBUG=~/nvimdebug.log` and neovim will dump messages from the plugin there. If something goes wrong it will likely show up in `~/.nvimlog`
+Somewhere in your environment do `export NEOVIM_JS_DEBUG=~/nvimdebug.log` and
+neovim will dump messages from the plugin there. If something goes wrong it
+will likely show up in `~/.nvimlog`
 
+To get repl going, use `lein repl` and execute below to get into a
+clojurescript repl:
+
+```clojure
+(require 'cljs.repl.node)
+(cider.piggieback/cljs-repl (cljs.repl.node/repl-env))
+```

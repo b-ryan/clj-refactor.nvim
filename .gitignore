@@ -6,3 +6,5 @@
 /target
 /rplugin/node/clj-refactor/compiled.js.map
 /rplugin/node/clj-refactor/build
+/out
+/.cljs_node_repl/
