@@ -92,10 +92,15 @@ I generally have 4 terminals open:
 - `$ lein cljsbuild auto test`
 - `$ node target/out/tests.js`
 - `$ lein cljsbuild auto plugin`
-- `$ tail -f $NEOVIM_JS_DEBUG`
+- `$ tail -f "$NVIM_NODE_LOG_FILE"`
 
-Somewhere in your environment do `export NEOVIM_JS_DEBUG=~/nvimdebug.log` and
-neovim will dump messages from the plugin there. If something goes wrong it
+Somewhere in your environment do
+
+```
+export NVIM_NODE_LOG_FILE="$HOME"/nvimdebug.log
+```
+
+Neovim will dump messages from the plugin there. If something goes wrong it
 will likely show up in `~/.nvimlog`
 
 To get repl going, use `lein repl` and execute below to get into a
